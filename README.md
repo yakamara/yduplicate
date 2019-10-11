@@ -22,4 +22,4 @@ siehe [CHANGELOG.md](https://github.com/yakamara/yduplicate/blob/master/CHANGELO
 
 ## Lizenz
 
-siehe [LICENSE.md](https://github.com/yakamara/yduplicate/blob/master/LICENSE)
+siehe [LICENSE](https://github.com/yakamara/yduplicate/blob/master/LICENSE)
