@@ -1,6 +1,13 @@
 YDuplicate - Dubletten Finder
 ================================================================================
 
+## Screenshots
+
+### Datentabelle
+![Screenshot](https://raw.githubusercontent.com/yakamara/yduplicate/assets/data_table.png)
+
+### Dubletten
+![Screenshot](https://raw.githubusercontent.com/yakamara/yduplicate/assets/finder.png)
 
 - - - - - - - - - - - - - - - - - - - -
 
