@@ -5,11 +5,10 @@ supportpage:
 
 page:
     title: YDuplicate
-    perm: admin[]
     icon: rex-icon fa-files-o
     subpages:
-        finder: { title: 'translate:finder', perm: 'yduplicate[finder]' }
         setup: { title: 'translate:setup', perm: admin }
+        finder: { title: 'translate:finder', perm: 'yduplicate[finder]' }
 
 requires:
     redaxo: ^5.8

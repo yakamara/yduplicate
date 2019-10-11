@@ -15,12 +15,16 @@ $detailUrl = $config['url'];
 
 if (empty($table) || empty($fields)) {
     echo rex_view::error(rex_i18n::msg('yduplicate_finder_error'));
+    return;
 }
 
 switch ($function) {
     case 'merge':
         $sql = rex_sql::factory();
         $sql->setQuery('DELETE FROM '.$table. ' WHERE id=?', [$other]);
+        $sql->setQuery('UPDATE '.rex::getTable('yduplicate_non_duplicate').' SET id_1 = REPLACE(id_1, :other, :data) WHERE `table` = :table AND  id_1 = :other', ['table' => $table, 'other' => $other, 'data' => $data]);
+        $sql->setQuery('UPDATE '.rex::getTable('yduplicate_non_duplicate').' SET id_2 = REPLACE(id_2, :other, :data) WHERE `table` = :table AND  id_2 = :other', ['table' => $table, 'other' => $other, 'data' => $data]);
+        break;
         break;
     case 'non_duplicate':
         if ($id_1 > $id_2) {
@@ -93,6 +97,11 @@ foreach ($data as $row) {
     }
 }
 
+if (!count($allIds)) {
+    echo rex_view::info(rex_i18n::msg('yduplicate_finder_no_duplicates'));
+    return;
+}
+
 $where = [];
 foreach ($allIds as $id) {
     $where[] = 'id = "'.$id.'"';
@@ -107,6 +116,7 @@ foreach ($duplicates as &$duplicate) {
     $duplicate['id_1'] = $itemsSave[$duplicate['id_1']];
     $duplicate['id_2'] = $itemsSave[$duplicate['id_2']];
 }
+unset($duplicate);
 
 
 $getRow = static function ($data, $other, $firstRow = false) use($columns, $detailUrl) {
@@ -141,12 +151,11 @@ foreach ($columns as $column) {
 }
 
 $tbody = '';
-foreach ($duplicates as $duplicate) {
+foreach ($duplicates as $index => $duplicate) {
     $tbody .= '
         <tr class="separator">
             <td colspan="'.(count($columns) + 2).'">&nbsp;</td>
         </tr>';
-
     $tbody .= $getRow($duplicate['id_1'], $duplicate['id_2'], true);
     $tbody .= $getRow($duplicate['id_2'], $duplicate['id_1']);
 }
@@ -157,14 +166,14 @@ $tbody .= '
 
 echo '
         <table class="table">
-                <thead>
-                    <tr>
-                        '.$thead.'
-                        <th colspan="2"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    '.$tbody.'                    
-                </tbody>
-            </table>
+            <thead>
+                <tr>
+                    '.$thead.'
+                    <th colspan="2"></th>
+                </tr>
+            </thead>
+            <tbody>
+                '.$tbody.'                    
+            </tbody>
+        </table>
 ';

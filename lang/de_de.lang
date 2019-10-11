@@ -6,6 +6,7 @@ yduplicate_fields_view = Felder die in der Liste ausgegeben werden (optional)
 yduplicate_finder = Finder
 yduplicate_finder_error = Tabelle oder Felder nicht hinterlegt
 yduplicate_merge = Diesen behalten
+yduplicate_finder_no_duplicates = Keine Dubletten gefunden
 yduplicate_non_duplicate = Beide behalten
 yduplicate_table = Tabelle
 yduplicate_title = YDuplicate
