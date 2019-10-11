@@ -53,12 +53,15 @@ foreach ($fields as $field) {
 }
 
 $columns = array_keys(rex_sql_table::get($table)->getColumns());
-foreach ($columns as $index => $column) {
-    if ($column == 'id' || in_array($column, $fields_view)) {
-        continue;
-    }
 
-    unset($columns[$index]);
+if (!empty($fields_view[0])) {
+    foreach ($columns as $index => $column) {
+        if ($column == 'id' || in_array($column, $fields_view)) {
+            continue;
+        }
+
+        unset($columns[$index]);
+    }
 }
 
 $data = $sql->getArray(
