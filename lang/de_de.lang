@@ -1,0 +1,13 @@
+yduplicate = Dubletten Finder
+yduplicate_comma_separated = Komma separiert
+yduplicate_detail = Detail
+yduplicate_fields = Felder die auf doppelte Einträge geprüft werden
+yduplicate_fields_view = Felder die in der Liste ausgegeben werden (optional)
+yduplicate_finder = Finder
+yduplicate_finder_error = Tabelle oder Felder nicht hinterlegt
+yduplicate_merge = Diesen behalten
+yduplicate_non_duplicate = Beide behalten
+yduplicate_table = Tabelle
+yduplicate_title = YDuplicate
+yduplicate_url = Url zur Detailansicht
+yduplicate_url_slug = {{id}} als Platzhalter für die Datensatz Id verwenden

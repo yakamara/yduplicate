@@ -1,0 +1,16 @@
+package: yduplicate
+version: '0.0.0-dev'
+author: Thomas Blum
+supportpage:
+
+page:
+    title: YDuplicate
+    perm: admin[]
+    icon: rex-icon fa-files-o
+    subpages:
+        finder: { title: 'translate:finder', perm: 'yduplicate[finder]' }
+        setup: { title: 'translate:setup', perm: admin }
+
+requires:
+    redaxo: ^5.8
+    php: ^7.3
